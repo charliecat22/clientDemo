@@ -1,4 +1,4 @@
-package com.example.client.license.bo;
+package com.example.license.bo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

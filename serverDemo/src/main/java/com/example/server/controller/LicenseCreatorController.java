@@ -1,17 +1,15 @@
-package com.example.client.controller;
+package com.example.server.controller;
 
 import cn.hutool.core.util.StrUtil;
-
-import com.example.client.license.LinuxServerInfos;
-import com.example.client.license.WindowsServerInfos;
-import com.example.client.license.abs.AbstractServerInfos;
-import com.example.client.license.bo.LicenseCheckModel;
-import com.example.client.license.bo.LicenseCreator;
-import com.example.client.license.bo.LicenseCreatorParam;
+import com.example.license.LinuxServerInfos;
+import com.example.license.WindowsServerInfos;
+import com.example.license.abs.AbstractServerInfos;
+import com.example.license.bo.LicenseCheckModel;
+import com.example.license.bo.LicenseCreator;
+import com.example.license.bo.LicenseCreatorParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

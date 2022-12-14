@@ -1,15 +1,8 @@
-package com.example.client.license.bo;
+package com.example.license.bo;
 
-import com.example.client.license.CustomLicenseManager;
-import de.schlichtherle.license.CipherParam;
-import de.schlichtherle.license.DefaultCipherParam;
-import de.schlichtherle.license.DefaultLicenseParam;
-import de.schlichtherle.license.KeyStoreParam;
-import de.schlichtherle.license.LicenseContent;
-import de.schlichtherle.license.LicenseManager;
-import de.schlichtherle.license.LicenseParam;
+import com.example.license.CustomLicenseManager;
+import de.schlichtherle.license.*;
 import lombok.extern.slf4j.Slf4j;
-
 
 import javax.security.auth.x500.X500Principal;
 import java.io.File;

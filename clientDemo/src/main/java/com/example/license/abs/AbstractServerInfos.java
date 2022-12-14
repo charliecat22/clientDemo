@@ -1,9 +1,7 @@
-package com.example.client.license.abs;
+package com.example.license.abs;
 
-import com.example.client.license.bo.LicenseCheckModel;
+import com.example.license.bo.LicenseCheckModel;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

@@ -1,6 +1,6 @@
-package com.example.client.license;
+package com.example.license;
 
-import com.example.client.license.abs.AbstractServerInfos;
+import com.example.license.abs.AbstractServerInfos;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetAddress;

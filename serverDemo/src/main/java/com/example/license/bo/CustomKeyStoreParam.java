@@ -1,9 +1,7 @@
-package com.example.client.license.bo;
+package com.example.license.bo;
 
 import de.schlichtherle.license.AbstractKeyStoreParam;
-import lombok.Data;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
