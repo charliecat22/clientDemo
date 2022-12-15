@@ -5,6 +5,7 @@ import com.example.license.LicenseVerify;
 import com.example.license.bo.LicenseVerifyParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -50,6 +51,15 @@ public class LicenseCheckListener implements ApplicationListener<ContextRefreshe
     @Value("${license.publicKeysStorePath}")
     private String publicKeysStorePath;
 
+    private LicenseVerifyParam param;
+
+    private LicenseVerify licenseVerify;
+
+    public LicenseCheckListener(LicenseVerifyParam licenseVerifyParam, LicenseVerify licenseVerify) {
+        this.param = licenseVerifyParam;
+        this.licenseVerify = licenseVerify;
+    }
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         //root application context 没有parent
@@ -57,18 +67,22 @@ public class LicenseCheckListener implements ApplicationListener<ContextRefreshe
         if (context == null) {
             if (StrUtil.isNotBlank(licensePath)) {
                 log.info("++++++++ 开始安装证书 ++++++++");
-                LicenseVerifyParam param = new LicenseVerifyParam();
+//                LicenseVerifyParam param = new LicenseVerifyParam();
                 param.setSubject(subject);
                 param.setPublicAlias(publicAlias);
                 param.setStorePass(storePass);
                 param.setLicensePath(licensePath);
                 param.setPublicKeysStorePath(publicKeysStorePath);
-                LicenseVerify licenseVerify = new LicenseVerify();
+//                LicenseVerify licenseVerify = new LicenseVerify();
                 //安装证书
                 licenseVerify.install(param);
                 log.info("++++++++ 证书安装结束 ++++++++");
                 boolean verify = licenseVerify.verify();
                 log.info("验证结果：{}", verify);
+                if (!verify) {
+                    SpringApplication.exit(event.getApplicationContext());
+                }
+
             }
 
         }

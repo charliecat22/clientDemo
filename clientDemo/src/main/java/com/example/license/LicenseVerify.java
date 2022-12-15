@@ -1,9 +1,12 @@
 package com.example.license;
 
+import com.example.client.controller.LicenseVerifyController;
 import com.example.license.bo.CustomKeyStoreParam;
+import com.example.license.bo.LicenseCheckModel;
 import com.example.license.bo.LicenseVerifyParam;
 import de.schlichtherle.license.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -19,6 +22,7 @@ import java.util.prefs.Preferences;
  * @since 1.0.0
  */
 @Slf4j
+@Component
 public class LicenseVerify {
 
     /**
@@ -36,8 +40,9 @@ public class LicenseVerify {
         try {
             LicenseManager licenseManager = LicenseManagerHolder.getInstance(initLicenseParam(param));
             licenseManager.uninstall();
-
             result = licenseManager.install(new File(param.getLicensePath()));
+            LicenseCheckModel expectedCheckModel = (LicenseCheckModel) result.getExtra();
+            LicenseVerifyController.TRADE_MODES.addAll(expectedCheckModel.getTradeModes());
             log.info(MessageFormat.format("证书安装成功，证书有效期：{0} - {1}", format.format(result.getNotBefore()), format.format(result.getNotAfter())));
         } catch (Exception e) {
             log.error("证书安装失败！", e);

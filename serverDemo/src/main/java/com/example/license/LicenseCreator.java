@@ -1,6 +1,7 @@
-package com.example.license.bo;
+package com.example.license;
 
-import com.example.license.CustomLicenseManager;
+import com.example.license.bo.CustomKeyStoreParam;
+import com.example.license.bo.LicenseCreatorParam;
 import de.schlichtherle.license.*;
 import lombok.extern.slf4j.Slf4j;
 

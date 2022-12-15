@@ -1,5 +1,7 @@
 package com.example.license.bo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * License校验类需要的参数
  *
@@ -7,6 +9,7 @@ package com.example.license.bo;
  * @date 2018/4/20
  * @since 1.0.0
  */
+@Component
 public class LicenseVerifyParam {
 
     /**
